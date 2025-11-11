@@ -1,9 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import {
-	WORRY_SAMPLE_DATA,
-	WorryCard,
-	WorryStatus,
-} from "./worrySamples";
+import { WORRY_SAMPLE_DATA, WorryCard, WorryStatus } from "./worrySamples";
 import { IconProvider } from "../../utils/IconProvider";
 import clsx from "clsx";
 
@@ -71,9 +67,7 @@ const WorryPage: React.FC = () => {
 	const updateStatus = (status: WorryStatus) => {
 		if (!selectedWorry) return;
 		setWorries((prev) =>
-			prev.map((w) =>
-				w.id === selectedWorry.id ? { ...w, status } : w
-			)
+			prev.map((w) => (w.id === selectedWorry.id ? { ...w, status } : w))
 		);
 		setSelectedWorry(null);
 	};
@@ -174,7 +168,9 @@ const WorryPage: React.FC = () => {
 										"overflow-hidden"
 									)}
 									style={{
-										transform: `translateY(${index * -8}px)`,
+										transform: `translateY(${
+											index * -8
+										}px)`,
 										zIndex: pendingWorries.length - index,
 									}}
 									onClick={() => setSelectedWorry(worry)}
@@ -190,10 +186,13 @@ const WorryPage: React.FC = () => {
 			</section>
 
 			{selectedWorry && (
-				<div className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center px-4 py-6 z-50">
+				<div className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center px-4 py-4 z-50">
 					<div
-						className="bg-white rounded-[32px] border border-gray-100 px-6 py-6 w-full max-w-sm flex flex-col space-y-4"
-						style={{ aspectRatio: "3 / 4" }}
+						className="bg-white rounded-[28px] border border-gray-100 px-5 py-5 w-full flex flex-col gap-4"
+						style={{
+							aspectRatio: "4 / 3",
+							maxWidth: "min(360px, calc(100vw - 48px))",
+						}}
 					>
 						<div className="space-y-1">
 							<p className="text-base font-pretendard-bold text-black-aneuk">
@@ -206,15 +205,15 @@ const WorryPage: React.FC = () => {
 						<p className="font-pretendard-medium text-black-aneuk whitespace-pre-wrap text-sm leading-6 flex-1">
 							{selectedWorry.content}
 						</p>
-						<div className="grid grid-cols-2 gap-3 mt-auto">
+						<div className="flex gap-3">
 							<button
-								className="h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-gray-700"
+								className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-gray-700"
 								onClick={() => updateStatus("resolved")}
 							>
 								괜찮았어요
 							</button>
 							<button
-								className="h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
+								className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
 								onClick={() => updateStatus("realized")}
 							>
 								현실이 됐어요
@@ -223,7 +222,7 @@ const WorryPage: React.FC = () => {
 					</div>
 					<button
 						onClick={() => removeWorry(selectedWorry.id)}
-						className="mt-4 px-6 py-2 rounded-full border border-red-300 text-red-500 font-pretendard-medium bg-white"
+						className="mt-4 px-6 py-2 rounded-full border text-xs border-red-300 text-red-500 font-pretendard-medium bg-white"
 					>
 						걱정 삭제하기
 					</button>

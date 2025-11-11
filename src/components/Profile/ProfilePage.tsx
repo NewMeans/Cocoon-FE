@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo_bg.png";
+import logo from "../../assets/images/cocoon_logo.png";
 import Cookies from "js-cookie";
 import { IconProvider } from "../../utils/IconProvider";
 

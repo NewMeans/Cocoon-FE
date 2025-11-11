@@ -1,6 +1,6 @@
 import React from "react";
 import { formatTime } from "../../utils/TimeFormatter";
-import profileImg from "../../assets/images/logo.png";
+import profileImg from "../../assets/images/cocoon_logo.png";
 
 interface ChatBubbleProps {
 	content: string;

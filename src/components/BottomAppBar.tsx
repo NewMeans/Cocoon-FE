@@ -35,7 +35,7 @@ const BottomAppBar: React.FC = () => {
 			/>
 			<IconButton
 				icon={<IconProvider.FileEditIcon />}
-				label="걱정카드"
+				label="Worry"
 				selected={selectedIcon === "worry"}
 				onClick={() => navigate("/worry")}
 			/>

@@ -4,8 +4,7 @@ import { FinalDiary } from "../../api/diary";
 import Card from "../Calendar/Card";
 import HomeCard from "./HomeCard";
 import { EmotionLabels } from "../Calendar/EmotionLabels";
-import logoImg from "../../assets/images/logo.png";
-import logoClickedImg from "../../assets/images/logo_close.png";
+import logoImg from "../../assets/images/cocoon_logo.png";
 
 const HomePage: React.FC = () => {
 	const [randomDiary, setRandomDiary] = useState<FinalDiary | null>(null);
@@ -108,14 +107,19 @@ const HomePage: React.FC = () => {
 					/>
 				)}
 				{!isFlipped && (
-					<img
-						src={isImageClicked ? logoClickedImg : logoImg}
+					<div
 						onMouseDown={handleMouseDown}
 						onMouseUp={handleMouseUp}
-						className={`p-5 mt-12 object-contain cursor-pointer ${
-							isImageClicked ? "w-[28%]" : "w-[30%]"
+						className={`mt-12 w-[20%] max-w-[220px] aspect-square rounded-2xl bg-white shadow-inner-strong flex items-center justify-center cursor-pointer transition-transform duration-150 overflow-hidden ${
+							isImageClicked ? "scale-95" : "scale-100"
 						}`}
-					></img>
+					>
+						<img
+							src={logoImg}
+							alt="오늘의 일기 카드 뽑기"
+							className="w-full h-full object-cover"
+						/>
+					</div>
 				)}
 			</div>
 		</div>

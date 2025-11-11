@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconProvider } from "../../utils/IconProvider";
 import { formatTime } from "../../utils/TimeFormatter";
 import { useChatPage } from "./ChatPageContext";
-import profileImg from "../../assets/images/logo.png";
+import profileImg from "../../assets/images/cocoon_logo.png";
 import heic2any from "heic2any";
 
 const ImageReceiver: React.FC = () => {
