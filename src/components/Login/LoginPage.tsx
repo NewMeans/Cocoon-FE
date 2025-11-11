@@ -5,7 +5,14 @@ import googleImg from "../../assets/images/google.png";
 import aneukImg from "../../assets/images/aneuk_profile.png";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
-import logo from "../../assets/images/logo_bg.png";
+import logo from "../../assets/images/cocoon_logo.png";
+
+const OAUTH_BASE_URL =
+	process.env.REACT_APP_OAUTH_BASE_URL ??
+	"https://aneuk-api.dev-lr.com/oauth2/authorization";
+const ENABLE_DEV_LOGIN =
+	(process.env.REACT_APP_ENABLE_DEV_LOGIN ?? "false").toLowerCase() ===
+	"true";
 
 const LoginPage = () => {
 	const [searchParams] = useSearchParams();
@@ -29,15 +36,14 @@ const LoginPage = () => {
 				alt="Profile"
 				className="w-[35%] mr-0.5 object-contain rounded-[40%] mb-4"
 			></img>
-			<div className="font-pretendard-bold text-2xl mb-36">아늑</div>
+			<div className="font-pretendard-bold text-2xl mb-36">코쿤</div>
 			<div className="font-pretendard-light text-gray-aneuk text-base mb-4">
 				- 로그인하여 나의 감정 알아보러 가기 -
 			</div>
 			<div className="flex flex-col w-full space-y-2">
 				<SocialLoginButton
 					handleLogin={() => {
-						window.location.href =
-							"https://aneuk-api.dev-lr.com/oauth2/authorization/kakao";
+						window.location.href = `${OAUTH_BASE_URL}/kakao`;
 					}}
 					img={kakaoImg}
 					label="Kakao 로그인"
@@ -46,8 +52,7 @@ const LoginPage = () => {
 				/>
 				<SocialLoginButton
 					handleLogin={() => {
-						window.location.href =
-							"https://aneuk-api.dev-lr.com/oauth2/authorization/google";
+						window.location.href = `${OAUTH_BASE_URL}/google`;
 					}}
 					img={googleImg}
 					label="Google 로그인"
@@ -55,6 +60,17 @@ const LoginPage = () => {
 					bgColor="bg-white border"
 				/>
 			</div>
+			{ENABLE_DEV_LOGIN && (
+				<button
+					onClick={() => {
+						setAuth("design-mode-token", "designer@local");
+						navigate("/calendar", { replace: true });
+					}}
+					className="mt-4 w-full h-11 rounded-[12px] bg-black-aneuk text-white font-pretendard-medium"
+				>
+					디자인 모드로 바로 들어가기
+				</button>
+			)}
 		</div>
 	);
 };
