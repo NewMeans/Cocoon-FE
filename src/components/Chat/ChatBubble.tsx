@@ -35,7 +35,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 			<div className="flex flex-col">
 				{sender === "ASSISTANT" && (
 					<div className="ml-1.5 mb-1 mt-1.5 text-black-aneuk text-sm">
-						아늑
+						코쿤
 					</div>
 				)}
 				<div

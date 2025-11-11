@@ -101,9 +101,9 @@ const ImageReceiver: React.FC = () => {
 				className="self-start w-12 mr-0.5 object-contain"
 			></img>
 			<div className="flex flex-col min-w-60">
-				<div className="ml-1.5 mb-1 mt-0.5 text-black-aneuk text-sm">
-					아늑
-				</div>
+					<div className="ml-1.5 mb-1 mt-0.5 text-black-aneuk text-sm">
+						코쿤
+					</div>
 				<div
 					className={`pt-2 pb-2.5 px-4 mb-2 rounded-3xl break-words whitespace-pre-wrap box-border bg-black-aneuk text-white`}
 				>
