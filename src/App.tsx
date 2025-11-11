@@ -19,6 +19,7 @@ import { AuthProvider } from "./AuthContext";
 import LoginPage from "./components/Login/LoginPage";
 import HomePage from "./components/Home/HomePage";
 import Cookies from "js-cookie";
+import WorryPage from "./components/Worry/WorryPage";
 
 function App() {
 	const location = useLocation();
@@ -58,6 +59,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/home" element={<HomePage />} />
+						<Route path="/worry" element={<WorryPage />} />
 						<Route path="/calendar" element={<CalendarPage />} />
 						<Route path="/chart" element={<ChartPage />} />
 						<Route path="/profile" element={<ProfilePage />} />

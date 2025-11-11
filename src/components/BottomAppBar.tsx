@@ -12,6 +12,8 @@ const BottomAppBar: React.FC = () => {
 		const path = location.pathname;
 		if (path.includes("calendar")) {
 			setSelectedIcon("calendar");
+		} else if (path.includes("worry")) {
+			setSelectedIcon("worry");
 		} else if (path.includes("chart")) {
 			setSelectedIcon("chart");
 		} else if (path.includes("profile")) {
@@ -19,7 +21,7 @@ const BottomAppBar: React.FC = () => {
 		} else {
 			setSelectedIcon("home");
 		}
-	}, [navigate]);
+	}, [location.pathname]);
 
 	return (
 		<div className="absolute bottom-0 w-full h-16 bg-white text-black-aneuk flex flex-shrink-0 justify-around items-center">
@@ -30,6 +32,12 @@ const BottomAppBar: React.FC = () => {
 				onClick={() => {
 					navigate("/home");
 				}}
+			/>
+			<IconButton
+				icon={<IconProvider.FileEditIcon />}
+				label="걱정카드"
+				selected={selectedIcon === "worry"}
+				onClick={() => navigate("/worry")}
 			/>
 			<IconButton
 				icon={<IconProvider.CalendarIcon />}
