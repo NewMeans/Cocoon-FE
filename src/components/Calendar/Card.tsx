@@ -30,13 +30,7 @@ const Card: React.FC<CardProps> = ({ curDiary, isFlipped, setIsFlipped }) => {
 		: [];
 
 	if (curDiary === null) {
-		return (
-			<div className="flex flex-1 justify-end items-end w-full h-full">
-				<div className="font-gowun-regular text-base text-black-aneuk mb-4 mr-2 animate-floating">
-					일기를 안 썼군요!
-				</div>
-			</div>
-		);
+		return <div className="flex flex-1 w-full h-full" />;
 	}
 
 	return (
