@@ -10,6 +10,8 @@ const WorryPage: React.FC = () => {
 	const [worries, setWorries] = useState<WorryCard[]>([]);
 	const [selectedWorry, setSelectedWorry] = useState<WorryCard | null>(null);
 	const [newWorry, setNewWorry] = useState("");
+	const [isDeckOpen, setIsDeckOpen] = useState(false);
+	const [isCompactWidth, setIsCompactWidth] = useState(false);
 
 	useEffect(() => {
 		const stored = localStorage.getItem(STORAGE_KEY);
@@ -74,6 +76,13 @@ const WorryPage: React.FC = () => {
 	};
 
 	useEffect(() => {
+		const updateCompact = () => setIsCompactWidth(window.innerWidth < 420);
+		updateCompact();
+		window.addEventListener("resize", updateCompact);
+		return () => window.removeEventListener("resize", updateCompact);
+	}, []);
+
+	useEffect(() => {
 		if (selectedWorry) {
 			const original = document.body.style.overflow;
 			document.body.style.overflow = "hidden";
@@ -99,6 +108,40 @@ const WorryPage: React.FC = () => {
 				</p>
 			</section>
 
+			<section
+				className="bg-white rounded-3xl border border-gray-100 shadow-custom-strong p-5 space-y-4 w-full flex flex-col"
+				style={{
+					aspectRatio: isCompactWidth ? undefined : "4 / 3",
+					maxWidth: "min(400px, calc(100vw - 48px))",
+					alignSelf: "center",
+				}}
+			>
+				<div className="space-y-1">
+					<p className="text-base font-pretendard-bold text-black-aneuk">
+						걱정되는 게 있나요?
+					</p>
+					<p className="text-xs text-gray-400">
+						오늘 떠오른 걱정을 적어보세요.
+					</p>
+				</div>
+				<textarea
+					className="w-full min-h-[120px] flex-1 rounded-2xl border border-gray-200 p-4 text-base focus:outline-none focus:ring-1 focus:ring-black-aneuk/40 resize-none bg-white"
+					placeholder="요즘 머리가 너무 아픈데 혹시 큰 병이면 어쩌지?"
+					value={newWorry}
+					onChange={(e) => setNewWorry(e.target.value)}
+				/>
+				<div className="flex items-center justify-between text-xs text-gray-400">
+					<div>요약 · {newWorry ? buildSummary(newWorry) : "-"}</div>
+					<button
+						onClick={handleAddWorry}
+						className="px-4 py-2 rounded-2xl bg-black-aneuk text-white font-pretendard-medium disabled:opacity-30"
+						disabled={!newWorry.trim()}
+					>
+						기록하기
+					</button>
+				</div>
+			</section>
+
 			<section className="grid grid-cols-2 gap-2">
 				<StatCard
 					label="걱정한 횟수"
@@ -122,36 +165,13 @@ const WorryPage: React.FC = () => {
 				/>
 			</section>
 
-			<section className="bg-white rounded-3xl border border-gray-100 p-5 space-y-4">
-				<div className="space-y-1">
-					<p className="text-base font-pretendard-bold text-black-aneuk">
-						걱정되는 게 있나요?
-					</p>
-					<p className="text-xs text-gray-400">
-						오늘 떠오른 걱정을 적어보세요.
-					</p>
-				</div>
-				<textarea
-					className="w-full h-28 rounded-2xl border border-gray-200 p-4 text-base focus:outline-none focus:ring-1 focus:ring-black-aneuk/40 resize-none bg-white"
-					placeholder="요즘 머리가 너무 아픈데 혹시 큰 병이면 어쩌지?"
-					value={newWorry}
-					onChange={(e) => setNewWorry(e.target.value)}
-				/>
-				<div className="flex items-center justify-between text-xs text-gray-400">
-					<div>요약 · {newWorry ? buildSummary(newWorry) : "-"}</div>
-					<button
-						onClick={handleAddWorry}
-						className="px-4 py-2 rounded-2xl bg-black-aneuk text-white font-pretendard-medium disabled:opacity-30"
-						disabled={!newWorry.trim()}
-					>
-						기록하기
-					</button>
-				</div>
-			</section>
-
-			<section className="flex-1">
-				<div className="flex items-center justify-between mb-3">
-					<div>
+			<section className="flex-1 w-full">
+				<button
+					type="button"
+					onClick={() => setIsDeckOpen((prev) => !prev)}
+					className="w-full flex items-center justify-between bg-white rounded-3xl border border-gray-100 px-4 py-3"
+				>
+					<div className="text-left">
 						<p className="text-base font-pretendard-bold text-black-aneuk">
 							걱정 되돌아보기
 						</p>
@@ -159,39 +179,52 @@ const WorryPage: React.FC = () => {
 							카드를 뽑아 과거의 걱정을 점검하세요.
 						</p>
 					</div>
-					<div className="text-sm text-gray-500 font-pretendard-medium">
-						남은 걱정 {pendingWorries.length}개
+					<div className="flex items-center space-x-2 text-sm text-gray-500 font-pretendard-medium">
+						<span>남은 걱정 {pendingWorries.length}개</span>
+						<IconProvider.DownArrowIcon
+							className={clsx(
+								"w-5 h-5 transition-transform",
+								isDeckOpen && "rotate-180"
+							)}
+						/>
 					</div>
-				</div>
-				<div className="relative h-64 overflow-y-auto">
-					{pendingWorries.length === 0 ? (
-						<div className="flex items-center justify-center h-full text-gray-400">
-							모든 걱정을 정리했어요!
-						</div>
-					) : (
-						<div className="relative pb-24">
-							{pendingWorries.map((worry, index) => (
-								<button
-									key={worry.id}
-									className={clsx(
-										"w-full h-16 bg-white text-black-aneuk rounded-2xl flex items-center px-4 text-left mb-3 border border-gray-100 hover:border-black-aneuk transition-all duration-200",
-										"overflow-hidden"
-									)}
-									style={{
-										transform: `translateY(${
-											index * -8
-										}px)`,
-										zIndex: pendingWorries.length - index,
-									}}
-									onClick={() => setSelectedWorry(worry)}
-								>
-									<div className="font-pretendard-medium text-sm truncate">
-										{worry.summary}
-									</div>
-								</button>
-							))}
-						</div>
+				</button>
+				<div
+					className={clsx(
+						"transition-[max-height] duration-300 overflow-hidden",
+						isDeckOpen ? "max-h-80 mt-4" : "max-h-0"
 					)}
+				>
+					<div className="relative h-64 overflow-y-auto">
+						{pendingWorries.length === 0 ? (
+							<div className="flex items-center justify-center h-full text-gray-400">
+								모든 걱정을 정리했어요!
+							</div>
+						) : (
+							<div className="relative pb-24">
+								{pendingWorries.map((worry, index) => (
+									<button
+										key={worry.id}
+										className={clsx(
+											"w-full h-16 bg-white text-black-aneuk rounded-2xl flex items-center px-4 text-left mb-3 border border-gray-100 hover:border-black-aneuk transition-all duration-200",
+											"overflow-hidden"
+										)}
+										style={{
+											transform: `translateY(${
+												index * -8
+											}px)`,
+											zIndex: pendingWorries.length - index,
+										}}
+										onClick={() => setSelectedWorry(worry)}
+									>
+										<div className="font-pretendard-medium text-sm truncate">
+											{worry.summary}
+										</div>
+									</button>
+								))}
+							</div>
+						)}
+					</div>
 				</div>
 			</section>
 
@@ -263,7 +296,7 @@ const StatCard: React.FC<{
 	value: string;
 	sub: string;
 }> = ({ label, value, sub }) => (
-	<div className="bg-white rounded-2xl border border-gray-100 px-4 py-3 space-y-1">
+	<div className="rounded-2xl border border-gray-100 px-4 py-3 space-y-1">
 		<div className="text-xs text-gray-400">{label}</div>
 		<div className="text-xl font-pretendard-bold text-black-aneuk">
 			{value}
