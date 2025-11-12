@@ -1,122 +1,103 @@
-# 아늑 (ANeuk): AI 기반 가짜 감정 중독 예방 및 감정 단어 확장 솔루션
+# 코쿤 (Cocoon): 감정 인지 능력 향상을 위한 AI 웰니스 솔루션
 
-![1](https://github.com/user-attachments/assets/0f15d485-f9c1-40ab-9677-d4a86e18f28f)
+> '코쿤'은 AI 페르소나 챗봇과의 대화를 통해 감정 일기를 작성하며, 414개의 감정 어휘 DB를 기반으로 자신의 감정을 명확히 인지하고 표현하는 힘을 길러주는 웰니스 솔루션입니다.
+>
+> 본 프로젝트는 기존 [아늑(A-Neuk)](https://github.com/pius338/A-Neuk-FE) 프로토타입의 기술과 시장성을 검증하고, 이를 바탕으로 고도화된 버전입니다.
 
-1. **일기 생성**  
-   - AI챗봇과 하루를 돌아보는 대화를 통해 일기를 작성합니다.  
+<img width="1920" height="1080" alt="1 (1)" src="https://github.com/user-attachments/assets/4aca3b59-b944-4a55-b93a-c91e23a01de0" />
 
-2. **감정 단어 추천 및 문장 재구성**  
-   - 대화 및 일기를 기반으로 감정 단어를 추천받고 새로운 감정을 학습합니다.  
-   - 선택된 감정을 반영하여 일기를 재구성합니다.  
+---
 
-3. **감정 도감**  
-   - 총 414개의 감정 단어를 데이터화하여 사용자가 모은 감정을 시각적으로 확인할 수 있습니다.  
+## ✨ 주요 기능 (Key Features)
 
-4. **감정 통계 제공**  
-   - 최근 30일 동안 느꼈던 감정을 분석하여 통계 자료를 제공합니다.  
-
-5. **추억 되돌아보기**  
-   - 과거의 일기와 감정을 확인하며 자신의 감정 변화를 되돌아볼 수 있습니다.  
+| 기능                           | 설명                                                                                                                                                                                |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **🤖 AI 페르소나 챗봇**        | 반려동물, 연예인 등 원하는 페르소나와 대화하며 심리적 유대감을 형성하고, 쉽고 꾸준하게 일기를 생성합니다.                                                                           |
+| **✍️ 정서 명명 & 일기 재구성** | **자체 구축한 414개 한국어 감정 어휘 DB**를 기반으로 AI가 사용자의 감정에 구체적인 이름을 추천합니다. 선택된 어휘로 일기 문장이 즉시 재구성되어 더욱 명료한 감정 기록을 완성합니다. |
+| **🃏 CBT 기반 걱정카드**       | 인지행동치료(CBT) 원리를 적용해 불안을 카드로 기록하고, 시간이 지난 뒤 걱정이 현실화되었는지 데이터를 통해 확인하며 부정적인 사고 패턴을 교정합니다.                                |
+| **📊 감정 도감 & 리포트**      | 새롭게 학습한 감정 단어를 '감정 도감'에 수집하고, 주간/월간 리포트를 통해 자신의 감정 변화 패턴을 객관적으로 파악하며 성장을 확인합니다.                                            |
 
 ---
 
 ## 🌐 서비스 링크
 
-🔗 **[서비스 바로가기](https://aneuk.dev-lr.com/)**
+🔗 **[서비스 바로가기 (Cocoon 프로토타입)](https://aneuk.dev-lr.com/)**
 
 ---
 
 ## 📄 개발 동기 및 목적
 
-  ‘가짜 감정 중독’은 일상적인 감정 표현이 몇 가지 단어로 제한되며, 진짜 감정 대신 가짜 감정을 표현하는 데 익숙해지는 현상입니다. 많은 현대인들이 자신의 감정을 제대로 인식하거나 표현하지 못하며, 이는 감정인식 장애인 ‘감정불능증’과 관련이 있습니다. 연구에 따르면, 전체 인구의 약 10%가, 정신 및 신체적 질병 환자의 40~60%가 감정을 명확히 인식하거나 표현하지 못하고 있습니다. 
-  
-  한 연구의 조사결과, 한국의 청년 세대가 감정을 인식하고 표현하는 어려움 (DIDF) 부분에서 중장년 세대보다 유의미하게 높은 수치를 보였다는 결과도 있습니다. 이처럼 현대인들이 사회적 분위기와 기타 요소에 의해 자신의 감정 을 인식하고 표현하는 것에 어려움을 겪고 있다는 것을 알 수 있습니다. 이런 성향은 ‘감정불능증’, ‘가짜 감정 중독’으로 이어져서 자기 인식의 결여, 감정 조절 능력 저하 등 정신 건강에 문제를 일으킬 수 있습니다.   
-  
-  아늑은 다양한 감정 단어를 제시하여 이러한 문제를 해결하고자 합니다. 감정 단어는 실제 감정적 경험에 큰 영향을 미칩니다. 예를 들어, 타히티 사회에서는 ‘슬픔’이라는 단어가 없어 사람들이 슬픔을 명확히 인식하지 못하고 이를 질병으로 여겼습니다. 이는 감정을 표현하는 언어가 부족할 때 감정적 경험이 왜곡될 수 있음을 보여줍니다. 타히티와 다르게 한국어에는 434개의 감정 단어가 있지만, 현대인들이 사용하는 단어는 극히 제한적입니다. 
-  
-  이러한 배경에서 아늑은 AI 챗봇과의 대화를 통해 사용자가 자신의 진짜 감정을 인식하고 표현하도록 돕습니다. 이 서비스는 감정 표현에 어려움을 겪는 한국 청년층을 대상으로 하며, 일기 작성과 감정 단어 추천을 통해 사용자가 자신의 감정을 정확히 인식하면서 풍부하고 다채로운 감정적 경험을 할 수 있도록 돕는 것이 목표입니다.
+AI 기술 발전으로 외부 세계와의 연결은 극도로 효율화되었지만, 역설적으로 ‘내면과의 단절’은 심화되었습니다. 특히 자신의 감정을 섬세하게 표현할 어휘와 방법을 잃어가는 10-30대 청년층은 ‘정서적 고립’ 상태에 놓이기 쉽습니다. 이는 감정 표현에 어려움을 겪는 ‘감정표현불능증’으로 이어질 수 있는 심각한 문제입니다. 실제로 전 세계 인구의 10%, 정신질환을 겪는 이들의 40~60%가 이 문제로 어려움을 겪고 있습니다.
+
+'슬픔'이라는 단어가 없어 슬픔을 질병으로 취급했던 타히티 사회의 사례처럼, 언어는 감정을 이해하는 핵심 도구입니다. 코쿤은 이 문제에 대한 솔루션으로, 과학적으로 증명된 ‘정서 명명’ 효과에 주목했습니다. 감정에 구체적인 이름을 붙이는 행위는 감정 조절 능력을 향상시키고 부정적 감정을 완화합니다.
+
+코쿤은 사용자가 AI 페르소나와 즐겁게 소통하며 감정 일기를 쓰고, 정밀한 감정 어휘를 추천받아 자신의 내면을 깊이 탐색하도록 돕습니다. 이를 통해 감정 인지 능력을 훈련하고 건강한 마음 관리 습관을 형성하는 것을 목표로 합니다.
 
 ---
 
-## 🌟 프로젝트 소개  
-기존 일기 앱은 단순히 텍스트 입력에 의존해 감정 표현이 제한적이고 정형화된 패턴에 머무르는 경우가 많습니다. 사용자는 자신의 감정을 명확히 인지하지 못하거나, 표현할 적절한 단어를 찾기 어려워 감정의 다양성을 경험하지 못하는 한계를 느낍니다. 또한, 감정적 경험을 시각적으로 정리하고 분석해주는 기능이 부족해 장기적인 자기 성찰이 어렵다는 문제점이 존재합니다. 
+## 🛠️ 로컬 실행 가이드
 
-아늑은 이러한 문제를 다음과 같은 방법으로 해결합니다. 
-1. LLM 모델을 활용해 사용자가 챗봇과 대화를 통해 일기를 쉽게 작성할 수 있는 환경을 제공합니다. 
-2. 사용자에게 감정을 추천하고 선택하는 과정에서 자신의 내면을 깊이 이해할 수 있도록 돕습니다. 
-3. 선택한 감정들로 일기를 재구성함으로써 감정 표현을 보다 세분화하고 자연스럽게 확장시킬 수 있습니다. 
-4. 단어별 예문과 뜻을 제공해 사용자가 다양한 감정 단어를 학습하며 자기 표현력을 키울 수 있도록 돕습니다. 
-5. 감정 단어들과 함께 그날의 사진을 일기와 함께 보여줌으로써 사용자 경험을 향상시킵니다. 
-6. 사용한 감정 단어들에 대한 2가지 통계와 랜덤 일기 기능을 통해 과거의 감정을 되새
-김으로써 자기 성찰의 기회를 제공합니다.
-
-<div align="center">
-  <img src=https://github.com/user-attachments/assets/064102c5-126f-4e3b-87fc-9e79fa4d0c9a width="800"/>
-</div>
-한국어 감정표현단어의 추출과 범주화라는 논문을 통해 데이터를 수집하고 정제하여 414
-개의 감정단어 데이터베이스를 구축하였습니다. 감정 데이터베이스는 단순한 감정 목록이 아
-닌, 감정의 세부 카테고리와 관련 예문 및 정의를 포함한 체계적인 구조로 이루어져 있습니다. 
-
-
-<div align="center">
-  <img src=https://github.com/user-attachments/assets/142f2747-f6b2-46cc-afe5-d763f12182b2 width="800"/>
-</div>
-
-또한, 과제 수행 과정에 GPT-4o mini 모델과 GPT-4o 모델을 적절히 체인의 형태로 조합
-하여 활용했습니다. 채팅, 문장 분리, 감정 추천, 그리고 문장 재구성과 같은 반복적인 작업에
-는 경량화된 GPT-4o mini 모델을 사용하여 효율성을 극대화했습니다. 반면, 일기 생성과 같은 가
-장 중요한 핵심 작업에는 더 정교한 GPT-4o 모델을 사용해 높은 품질의 결과를 보장했습니다. 
-이를 통해 비용을 최적화하고 시스템의 경제성과 성능을 모두 확보했습니다. 
-또한, 아늑은 2가지 감정 통계를 제공합니다. 첫번째 감정통계는 최근 30일 동안 사용자가 
-느낀 감정을 카테고리별로 분석하여 시각적으로 제공합니다. 두번째 감정도감은 사용자가 전체 
-414개의 감정 중 어떤 감정을 경험했는지, 이를 카테고리별로 정리해 도감 형태로 보여줍니다.
+1. `.env.example`을 복사해 `.env.local`을 만든 후 필요한 값을 설정합니다.
+    ```bash
+    cp .env.example .env.local
+    ```
+    - `REACT_APP_API_BASE_URL`: 프론트가 호출할 API 서버 주소 (기본값은 배포 서버)
+    - `REACT_APP_OAUTH_BASE_URL`: 소셜 로그인 리다이렉트 주소 (기본값은 배포 서버)
+    - `REACT_APP_ENABLE_DEV_LOGIN`: `true`면 로그인 화면에 디자인 모드(임시 토큰 주입) 버튼 활성화
+2. 의존성을 설치하고 개발 서버를 실행합니다.
+    ```bash
+    npm install
+    npm start
+    ```
+3. 프로덕션 번들을 만들려면 `npm run build`, 컨테이너 이미지는 `docker build -t cocoon-fe .`를 사용하세요.
 
 ---
 
-## 🛠️ 개발 및 구현 방식  
+## 🚀 핵심 기술 및 구현
 
-### 기술 스택  
-- **Frontend**: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Context-API](https://img.shields.io/badge/Context--Api-000000?style=for-the-badge&logo=react)
-- **Backend**: ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-- **Database**: ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-- **AI Server**: ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![LangChain](https://img.shields.io/badge/langchain-1C3C3C?style=for-the-badge&logo=LangChain&logoColor=white)
-- **Deploy, CI/CD**: ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+### 기술 스택
 
-### 주요 구현  
-1. **채팅 기반 일기 생성**
+-   **Frontend**: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Context-API](https://img.shields.io/badge/Context--Api-000000?style=for-the-badge&logo=react)
+-   **Backend**: ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+-   **Database**: ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+-   **AI Server**: ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![LangChain](https://img.shields.io/badge/langchain-1C3C3C?style=for-the-badge&logo=LangChain&logoColor=white)
+-   **Deploy, CI/CD**: ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
+### 주요 구현 상세
+
+#### 1. 채팅 기반 일기 생성
+
 <div align="center">
   <img src=https://github.com/user-attachments/assets/e236b2bb-6d9f-4762-ad37-bee14592f855 width="500"/>
 </div>
 
-  - ChatGPT 기반의 대화 생성 및 일기 작성 알고리즘 설계  
-  - 유저와 대화할 때 금지된 행동 및 핵심 가이드라인 설정  
+-   LLM 기반의 대화 생성 및 일기 작성 알고리즘을 설계하여, 사용자와의 자연스러운 상호작용을 통해 일기를 완성합니다.
 
-3. **감정 추천 시스템**  
+#### 2. 414개 어휘 기반 감정 추천 시스템
+
 <div align="center">
   <img src=https://github.com/user-attachments/assets/cfce6f2d-4407-4b6e-a1f6-88192f06ffaf width="800"/>
 </div>
 
-   - 대분류 감정(11가지) 및 세부 감정(414개) 분류  
-   - 감정 데이터 기반으로 문단별 감정을 추천
-   - 선택한 감정을 기반으로 즉시 문장을 재구성   
+-   자체 구축한 414개 감정 어휘 데이터베이스를 활용해 문맥에 맞는 정밀한 감정 단어를 추천하고, 선택된 단어를 문장에 즉시 반영하여 표현의 깊이를 더합니다.
 
-5. **최종 일기 생성**  
+#### 3. 최종 일기 생성 및 확인
+
 <div align="center">
   <img src=https://github.com/user-attachments/assets/11d19ded-6596-4079-9bfa-45b20e93df0c width="800"/>
 </div>
 
-   - 재구성 된 문장들로 최종 일기 생성
-   - 선택한 감정 단어, 뜻 그리고 예문을 확인 가능 
+-   재구성된 문장들로 최종 일기를 생성하며, 사용된 감정 단어의 뜻과 예문을 함께 제공하여 어휘력 확장을 돕습니다.
 
-7. **감정 통계 및 도감**
+#### 4. 감정 통계 및 도감
+
 <div align="center">
   <img src=https://github.com/user-attachments/assets/b0cadb24-88e2-4fb5-b223-df8535f76b0c width="800"/>
 </div>
 
-   - 감정 통계를 기반으로 사용자 맞춤형 데이터 시각화
-   - 감정 도감을 통한 동기부여
+-   감정 통계 데이터를 시각화하여 자신의 감정 패턴을 쉽게 파악하고, 감정 도감을 통해 성취감을 느끼며 지속적인 사용을 유도합니다.
 
-### 아키텍처 
+### 아키텍처
 
 <div align="center">
   <img src=https://github.com/user-attachments/assets/354b211e-1681-40d6-8815-a63caaeea16a width="800"/>
@@ -124,17 +105,17 @@
 
 ---
 
-## 📊 기대 효과  
-- **일기 작성의 심리적 장벽 제거**: 사용자가 일기 작성을 편하게 느끼도록 유도  
-- **감정적 인지 능력 강화**: 다양한 감정을 인식하고 학습  
-- **정신적/신체적 건강 회복**: 감정 표현의 확장을 통해 정서적 건강 개선  
+## 📊 기대 효과
+
+-   **정서 지능 강화**: 자신의 감정을 정확히 인식하고 다루는 능력을 훈련합니다.
+-   **건강한 마음 관리 습관 형성**: 일기 작성을 '과업'이 아닌 '즐거운 소통'으로 전환하여 꾸준한 자기 성찰을 돕습니다.
+-   **불안 통제 능력 향상**: 데이터 기반의 '걱정카드'를 통해 막연한 불안감을 스스로 통제하는 힘을 기릅니다.
 
 ---
 
-## 👥 팀 소개  
-| 이름      | 역할         | GitHub                 | 주요 작업                      |
-|-----------|--------------|----------------------------|------------------------------------|
-| 김민식   | FE, Design  | [pius338](https://github.com/pius338) | UI/UX 설계 및 디자인, 프론트엔드 개발 |
-| 장민석   | AI, Infra    | [minseok128](https://github.com/minseok128) | AI 서버 및 인프라 관리              |
-| 김여진   | BE, DB       | [LUCETE012](https://github.com/LUCETE012) | 백엔드 및 데이터베이스 설계         |
+## 👥 팀 소개 (Team Newmins)
 
+| 이름       | 역할                  | GitHub                                      | 주요 담당                                                |
+| :--------- | :-------------------- | :------------------------------------------ | :------------------------------------------------------- |
+| **김민식** | FE, Design            | [pius338](https://github.com/pius338)       | 팀 운영 총괄, 프로덕트 기획, UI/UX 설계, 프론트엔드 개발 |
+| **장민석** | AI, BE, Infra | [minseok128](https://github.com/minseok128) | AI 모델 개발 및 서빙, 백엔드 API, 인프라 구축 및 관리    |
