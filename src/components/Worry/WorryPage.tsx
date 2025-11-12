@@ -41,8 +41,13 @@ const WorryPage: React.FC = () => {
 		return { total, realized, resolved, pending, probability };
 	}, [worries]);
 
-	const pendingWorries = useMemo(
-		() => worries.filter((w) => w.status === "pending"),
+	const sortedWorries = useMemo(
+		() =>
+			[...worries].sort(
+				(a, b) =>
+					new Date(b.createdAt).getTime() -
+					new Date(a.createdAt).getTime()
+			),
 		[worries]
 	);
 
@@ -180,7 +185,7 @@ const WorryPage: React.FC = () => {
 						</p>
 					</div>
 					<div className="flex items-center space-x-2 text-sm text-gray-500 font-pretendard-medium">
-						<span>남은 걱정 {pendingWorries.length}개</span>
+						<span>총 {worries.length}개</span>
 						<IconProvider.DownArrowIcon
 							className={clsx(
 								"w-5 h-5 transition-transform",
@@ -196,30 +201,31 @@ const WorryPage: React.FC = () => {
 					)}
 				>
 					<div className="relative h-64 overflow-y-auto">
-						{pendingWorries.length === 0 ? (
+						{sortedWorries.length === 0 ? (
 							<div className="flex items-center justify-center h-full text-gray-400">
 								모든 걱정을 정리했어요!
 							</div>
 						) : (
 							<div className="relative pb-24">
-								{pendingWorries.map((worry, index) => (
+								{sortedWorries.map((worry, index) => (
 									<button
 										key={worry.id}
 										className={clsx(
-											"w-full h-16 bg-white text-black-aneuk rounded-2xl flex items-center px-4 text-left mb-3 border border-gray-100 hover:border-black-aneuk transition-all duration-200",
+											"w-full min-h-16 bg-white text-black-aneuk rounded-2xl flex justify-between items-center px-4 text-left mb-3 border border-gray-100 hover:border-black-aneuk transition-all duration-200",
 											"overflow-hidden"
 										)}
 										style={{
 											transform: `translateY(${
 												index * -8
 											}px)`,
-											zIndex: pendingWorries.length - index,
+											zIndex: sortedWorries.length - index,
 										}}
 										onClick={() => setSelectedWorry(worry)}
 									>
 										<div className="font-pretendard-medium text-sm truncate">
 											{worry.summary}
 										</div>
+										<StatusBadge status={worry.status} />
 									</button>
 								))}
 							</div>
@@ -246,23 +252,34 @@ const WorryPage: React.FC = () => {
 									{formatRelative(selectedWorry.createdAt)}
 								</p>
 							</div>
+							<StatusBadge
+								status={selectedWorry.status}
+								dense
+								className="self-start"
+							/>
 							<p className="font-pretendard-medium text-black-aneuk whitespace-pre-wrap text-sm leading-6 flex-1">
 								{selectedWorry.content}
 							</p>
-							<div className="flex gap-3">
-								<button
-									className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
-									onClick={() => updateStatus("resolved")}
-								>
-									괜찮았어요
-								</button>
-								<button
-									className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
-									onClick={() => updateStatus("realized")}
-								>
-									현실이 됐어요
-								</button>
-							</div>
+							{selectedWorry.status === "pending" ? (
+								<div className="flex gap-3">
+									<button
+										className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
+										onClick={() => updateStatus("resolved")}
+									>
+										괜찮았어요
+									</button>
+									<button
+										className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-black-aneuk"
+										onClick={() => updateStatus("realized")}
+									>
+										현실이 됐어요
+									</button>
+								</div>
+							) : (
+								<p className="text-xs text-gray-500">
+									이미 기록된 걱정이에요. 필요하면 삭제할 수 있어요.
+								</p>
+							)}
 						</div>
 						<button
 							onClick={() => removeWorry(selectedWorry.id)}
@@ -317,5 +334,43 @@ const formatRelative = (createdAt: string) => {
 
 const generateId = () =>
 	`worry-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+const StatusBadge: React.FC<{
+	status: WorryStatus;
+	dense?: boolean;
+	className?: string;
+}> = ({ status, dense = false, className }) => {
+	const config: Record<
+		WorryStatus,
+		{ label: string; classes: string }
+	> = {
+		pending: {
+			label: "진행 중",
+			classes: "bg-gray-100 text-gray-600",
+		},
+		resolved: {
+			label: "괜찮았어요",
+			classes: "bg-green-100 text-green-600",
+		},
+		realized: {
+			label: "현실이 됐어요",
+			classes: "bg-red-100 text-red-600",
+		},
+	};
+
+	const { label, classes } = config[status];
+	return (
+		<div
+			className={clsx(
+				"px-3 rounded-full font-pretendard-medium",
+				dense ? "py-0.5 text-xs" : "py-1 text-sm",
+				classes,
+				className
+			)}
+		>
+			{label}
+		</div>
+	);
+};
 
 export default WorryPage;
