@@ -18,7 +18,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({}) => {
 			onClick={() => {
 				navigate("/chat");
 			}}
-			className={`absolute bottom-20 right-4 w-16 h-16 rounded-full bg-white flex items-center justify-center border border-gray-100 ${
+			className={`absolute bottom-20 right-4 w-16 h-16 shadow-custom-strong rounded-full bg-white flex items-center justify-center ${
 				isFloating ? "animate-floating" : "animate-slide-up"
 			}`}
 		>
