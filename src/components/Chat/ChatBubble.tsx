@@ -21,11 +21,13 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 			} items-end mb-4`}
 		>
 			{sender === "ASSISTANT" && (
-				<img
-					src={profileImg}
-					alt="Profile"
-					className="self-start w-12 mr-0.5 object-contain"
-				></img>
+				<div className="self-start w-11 h-11 mr-0.5 rounded-2xl overflow-hidden bg-white">
+					<img
+						src={profileImg}
+						alt="Profile"
+						className="w-full h-full object-cover"
+					/>
+				</div>
 			)}
 			{sender === "MEMBER" && (
 				<div className="text-xs text-gray-aneuk pr-1">

@@ -95,11 +95,13 @@ const ImageReceiver: React.FC = () => {
 
 	return (
 		<div className="flex flex-row justify-start items-end mb-4 ml-0.5">
-			<img
-				src={profileImg}
-				alt="Profile"
-				className="self-start w-12 mr-0.5 object-contain"
-			></img>
+			<div className="self-start w-11 h-11 mr-0.5 rounded-2xl overflow-hidden bg-white">
+				<img
+					src={profileImg}
+					alt="Profile"
+					className="w-full h-full object-cover"
+				/>
+			</div>
 			<div className="flex flex-col min-w-60">
 					<div className="ml-1.5 mb-1 mt-0.5 text-black-aneuk text-sm">
 						코쿤
