@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { WORRY_SAMPLE_DATA, WorryCard, WorryStatus } from "./worrySamples";
 import { IconProvider } from "../../utils/IconProvider";
 import clsx from "clsx";
@@ -72,11 +73,20 @@ const WorryPage: React.FC = () => {
 		setSelectedWorry(null);
 	};
 
+	useEffect(() => {
+		if (selectedWorry) {
+			const original = document.body.style.overflow;
+			document.body.style.overflow = "hidden";
+			return () => {
+				document.body.style.overflow = original;
+			};
+		}
+	}, [selectedWorry]);
+
 	return (
 		<div className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk px-4 py-6 space-y-6">
 			<section className="space-y-1">
 				<div className="flex items-center space-x-2">
-					<IconProvider.FileEditIcon className="w-5 h-5 text-gray-500" />
 					<h1 className="text-xl font-pretendard-bold text-black-aneuk">
 						걱정카드
 					</h1>
@@ -185,55 +195,57 @@ const WorryPage: React.FC = () => {
 				</div>
 			</section>
 
-			{selectedWorry && (
-				<div className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center px-4 py-4 z-50">
-					<div
-						className="bg-white rounded-[28px] border border-gray-100 px-5 py-5 w-full flex flex-col gap-4"
-						style={{
-							aspectRatio: "4 / 3",
-							maxWidth: "min(360px, calc(100vw - 48px))",
-						}}
-					>
-						<div className="space-y-1">
-							<p className="text-base font-pretendard-bold text-black-aneuk">
-								이 걱정이 현실이 되었나요?
+			{selectedWorry &&
+				createPortal(
+					<div className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center px-4 z-50">
+						<div
+							className="bg-white rounded-[28px] border border-gray-100 px-5 py-5 w-full flex flex-col gap-4"
+							style={{
+								aspectRatio: "4 / 3",
+								maxWidth: "min(360px, calc(100vw - 48px))",
+							}}
+						>
+							<div className="space-y-1">
+								<p className="text-base font-pretendard-bold text-black-aneuk">
+									이 걱정이 현실이 되었나요?
+								</p>
+								<p className="text-xs text-gray-400">
+									{formatRelative(selectedWorry.createdAt)}
+								</p>
+							</div>
+							<p className="font-pretendard-medium text-black-aneuk whitespace-pre-wrap text-sm leading-6 flex-1">
+								{selectedWorry.content}
 							</p>
-							<p className="text-xs text-gray-400">
-								{formatRelative(selectedWorry.createdAt)}
-							</p>
+							<div className="flex gap-3">
+								<button
+									className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
+									onClick={() => updateStatus("resolved")}
+								>
+									괜찮았어요
+								</button>
+								<button
+									className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
+									onClick={() => updateStatus("realized")}
+								>
+									현실이 됐어요
+								</button>
+							</div>
 						</div>
-						<p className="font-pretendard-medium text-black-aneuk whitespace-pre-wrap text-sm leading-6 flex-1">
-							{selectedWorry.content}
-						</p>
-						<div className="flex gap-3">
-							<button
-								className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-gray-700"
-								onClick={() => updateStatus("resolved")}
-							>
-								괜찮았어요
-							</button>
-							<button
-								className="flex-1 h-12 rounded-2xl border border-gray-200 text-sm font-pretendard-medium text-green-600"
-								onClick={() => updateStatus("realized")}
-							>
-								현실이 됐어요
-							</button>
-						</div>
-					</div>
-					<button
-						onClick={() => removeWorry(selectedWorry.id)}
-						className="mt-4 px-6 py-2 rounded-full border text-xs border-red-300 text-red-500 font-pretendard-medium bg-white"
-					>
-						걱정 삭제하기
-					</button>
-					<button
-						className="mt-3 text-xs text-gray-200 underline"
-						onClick={() => setSelectedWorry(null)}
-					>
-						닫기
-					</button>
-				</div>
-			)}
+						<button
+							onClick={() => removeWorry(selectedWorry.id)}
+							className="mt-4 px-6 py-2 rounded-full border text-xs border-red-300 text-red-500 font-pretendard-medium bg-white"
+						>
+							걱정 삭제하기
+						</button>
+						<button
+							className="mt-3 text-xs text-gray-200 underline"
+							onClick={() => setSelectedWorry(null)}
+						>
+							닫기
+						</button>
+					</div>,
+					document.body
+				)}
 		</div>
 	);
 };
