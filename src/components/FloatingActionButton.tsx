@@ -18,15 +18,20 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({}) => {
 			onClick={() => {
 				navigate("/chat");
 			}}
-			className={`absolute bottom-20 right-4 w-20 h-20 rounded-3xl bg-white flex items-center justify-center border border-gray-100 overflow-hidden ${
+			className={`absolute bottom-20 right-4 w-20 h-20 rounded-full bg-white flex items-center justify-center border border-gray-100 ${
 				isFloating ? "animate-floating" : "animate-slide-up"
 			}`}
 		>
-			<img
-				src={logoImg}
-				alt="걱정카드 이동"
-				className="w-full h-full object-cover"
-			/>
+			<div className="w-full h-full rounded-full overflow-hidden">
+				<img
+					src={logoImg}
+					alt="코쿤 챗봇 아이콘"
+					className="w-full h-full object-cover"
+				/>
+			</div>
+			<div className="absolute -top-0.5 -right-0.5 h-5 w-5 rounded-full bg-red-500 text-white text-[11px] font-pretendard-bold flex items-center justify-center pointer-events-none">
+				1
+			</div>
 		</button>
 	);
 };
