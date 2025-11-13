@@ -197,38 +197,30 @@ const WorryPage: React.FC = () => {
 				<div
 					className={clsx(
 						"transition-[max-height] duration-300 overflow-hidden",
-						isDeckOpen ? "max-h-80 mt-4" : "max-h-0"
+						isDeckOpen ? "max-h-[1200px] mt-4" : "max-h-0"
 					)}
 				>
-					<div className="relative h-64 overflow-y-auto">
+					<div className="relative space-y-3 pb-8">
 						{sortedWorries.length === 0 ? (
 							<div className="flex items-center justify-center h-full text-gray-400">
 								모든 걱정을 정리했어요!
 							</div>
 						) : (
-							<div className="relative pb-24">
-								{sortedWorries.map((worry, index) => (
-									<button
-										key={worry.id}
-										className={clsx(
-											"w-full min-h-16 bg-white text-black-aneuk rounded-2xl flex justify-between items-center px-4 text-left mb-3 border border-gray-100 hover:border-black-aneuk transition-all duration-200",
-											"overflow-hidden"
-										)}
-										style={{
-											transform: `translateY(${
-												index * -8
-											}px)`,
-											zIndex: sortedWorries.length - index,
-										}}
-										onClick={() => setSelectedWorry(worry)}
-									>
-										<div className="font-pretendard-medium text-sm truncate">
-											{worry.summary}
-										</div>
-										<StatusBadge status={worry.status} />
-									</button>
-								))}
-							</div>
+							sortedWorries.map((worry) => (
+								<button
+									key={worry.id}
+									className={clsx(
+										"w-full min-h-16 bg-white text-black-aneuk rounded-2xl flex justify-between items-center px-4 text-left border border-gray-100 hover:border-black-aneuk transition-all duration-200",
+										"overflow-hidden"
+									)}
+									onClick={() => setSelectedWorry(worry)}
+								>
+									<div className="font-pretendard-medium text-sm truncate">
+										{worry.summary}
+									</div>
+									<StatusBadge status={worry.status} />
+								</button>
+							))
 						)}
 					</div>
 				</div>
