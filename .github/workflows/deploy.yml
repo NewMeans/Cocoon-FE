@@ -23,14 +23,14 @@ jobs:
 
       # Build the Docker image
       - name: Build Docker image
-        run: docker build -t a-neuk-react:latest .
+        run: docker build -t cocoon-react:latest .
 
       # Tag the Docker image
       - name: Tag Docker Image
-        run: docker tag a-neuk-react:latest minseok128/a-neuk-react:release1
+        run: docker tag cocoon-react:latest minseok128/cocoon-react:release1
 
 
       # Push the Docker image
       - name: Push Docker Image to Docker Hub
         run: |
-          docker push minseok128/a-neuk-react:release1
+          docker push minseok128/cocoon-react:release1
