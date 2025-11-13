@@ -50,7 +50,7 @@ const LoginPage = () => {
 					labelColor="text-black"
 					bgColor="bg-[#FEE500]"
 				/>
-				<SocialLoginButton
+				{/* <SocialLoginButton
 					handleLogin={() => {
 						window.location.href = `${OAUTH_BASE_URL}/google`;
 					}}
@@ -58,7 +58,7 @@ const LoginPage = () => {
 					label="Google 로그인"
 					labelColor="text-black"
 					bgColor="bg-white border"
-				/>
+				/> */}
 			</div>
 			{ENABLE_DEV_LOGIN && (
 				<button
