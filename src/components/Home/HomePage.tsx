@@ -4,7 +4,7 @@ import { FinalDiary } from "../../api/diary";
 import Card from "../Calendar/Card";
 import HomeCard from "./HomeCard";
 import { EmotionLabels } from "../Calendar/EmotionLabels";
-import logoImg from "../../assets/images/cocoon_logo.png";
+import logoImg from "../../assets/images/maltipoo.png";
 
 const HomePage: React.FC = () => {
 	const [randomDiary, setRandomDiary] = useState<FinalDiary | null>(null);

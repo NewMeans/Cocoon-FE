@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconProvider } from "../../utils/IconProvider";
 import { formatTime } from "../../utils/TimeFormatter";
 import { useChatPage } from "./ChatPageContext";
-import profileImg from "../../assets/images/cocoon_logo.png";
+import profileImg from "../../assets/images/maltipoo.png";
 import heic2any from "heic2any";
 
 const ImageReceiver: React.FC = () => {
@@ -98,14 +98,14 @@ const ImageReceiver: React.FC = () => {
 			<div className="self-start w-11 h-11 mr-0.5 rounded-2xl overflow-hidden bg-white">
 				<img
 					src={profileImg}
-					alt="Profile"
+					alt="콩이 프로필"
 					className="w-full h-full object-cover"
 				/>
 			</div>
 			<div className="flex flex-col min-w-60">
-					<div className="ml-1.5 mb-1 mt-0.5 text-black-aneuk text-sm">
-						코쿤
-					</div>
+				<div className="ml-1.5 mb-1 mt-0.5 text-black-aneuk text-sm">
+					콩이
+				</div>
 				<div
 					className={`pt-2 pb-2.5 px-4 mb-2 rounded-3xl break-words whitespace-pre-wrap box-border bg-black-aneuk text-white`}
 				>

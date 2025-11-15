@@ -16,7 +16,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ onBack }) => {
 			>
 				<IconProvider.LeftArrowIcon className="w-8 h-8" />
 			</button>
-			<h1 className="text-lg font-bold text-gray-800">코쿤</h1>
+			<h1 className="text-lg font-bold text-gray-800">콩이</h1>
 		</div>
 	);
 };

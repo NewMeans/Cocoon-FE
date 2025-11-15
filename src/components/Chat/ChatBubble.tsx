@@ -1,6 +1,6 @@
 import React from "react";
 import { formatTime } from "../../utils/TimeFormatter";
-import profileImg from "../../assets/images/cocoon_logo.png";
+import profileImg from "../../assets/images/maltipoo.png";
 
 interface ChatBubbleProps {
 	content: string;
@@ -24,7 +24,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 				<div className="self-start w-11 h-11 mr-0.5 rounded-2xl overflow-hidden bg-white">
 					<img
 						src={profileImg}
-						alt="Profile"
+						alt="콩이 프로필"
 						className="w-full h-full object-cover"
 					/>
 				</div>
@@ -37,7 +37,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 			<div className="flex flex-col">
 				{sender === "ASSISTANT" && (
 					<div className="ml-1.5 mb-1 mt-1.5 text-black-aneuk text-sm">
-						코쿤
+						콩이
 					</div>
 				)}
 				<div

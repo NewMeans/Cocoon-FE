@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IconProvider } from "../utils/IconProvider";
-import logoImg from "../assets/images/cocoon_logo.png";
+import logoImg from "../assets/images/maltipoo.png";
 
 type FloatingActionButtonProps = {};
 
@@ -25,7 +25,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({}) => {
 			<div className="w-full h-full rounded-full overflow-hidden">
 				<img
 					src={logoImg}
-					alt="코쿤 챗봇 아이콘"
+					alt="콩이 챗봇 아이콘"
 					className="w-full h-full object-cover"
 				/>
 			</div>
