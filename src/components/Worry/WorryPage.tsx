@@ -98,8 +98,8 @@ const WorryPage: React.FC = () => {
 	}, [selectedWorry]);
 
 	return (
-		<div className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk px-4 py-6 pb-32 space-y-6">
-			<section className="space-y-1">
+		<div className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk px-4 py-6 pb-32 space-y-4">
+			<section className="space-y-1 px-4">
 				<div className="flex items-center space-x-2">
 					<h1 className="text-xl font-pretendard-bold text-black-aneuk">
 						걱정카드
@@ -130,16 +130,15 @@ const WorryPage: React.FC = () => {
 					</p>
 				</div>
 				<textarea
-					className="w-full min-h-[120px] flex-1 rounded-2xl border border-gray-200 p-4 text-base focus:outline-none focus:ring-1 focus:ring-black-aneuk/40 resize-none bg-white"
+					className="w-full min-h-[120px] flex-1 placeholder-gray-400 rounded-2xl border border-gray-200 p-4 text-base focus:outline-none focus:ring-1 focus:ring-black-aneuk/40 resize-none bg-white"
 					placeholder="요즘 머리가 너무 아픈데 혹시 큰 병이면 어쩌지?"
 					value={newWorry}
 					onChange={(e) => setNewWorry(e.target.value)}
 				/>
-				<div className="flex items-center justify-between text-xs text-gray-400">
-					<div>요약 · {newWorry ? buildSummary(newWorry) : "-"}</div>
+				<div className="flex items-center justify-start text-gray-400">
 					<button
 						onClick={handleAddWorry}
-						className="px-6 py-4 rounded-2xl bg-black-aneuk text-white font-pretendard-medium disabled:opacity-30"
+						className="px-6 py-4 rounded-2xl w-full bg-black-aneuk text-sm text-white font-pretendard-medium disabled:opacity-30"
 						disabled={!newWorry.trim()}
 					>
 						기록하기
@@ -147,26 +146,12 @@ const WorryPage: React.FC = () => {
 				</div>
 			</section>
 
-			<section className="grid grid-cols-2 gap-2">
-				<StatCard
-					label="걱정한 횟수"
-					value={`${stats.total}`}
-					sub="누적 기록"
-				/>
-				<StatCard
-					label="현실이 된 걱정"
-					value={`${stats.realized}`}
-					sub="예상보다 적어요"
-				/>
-				<StatCard
-					label="해결된 걱정"
-					value={`${stats.resolved}`}
-					sub="스스로 이겨낸 순간"
-				/>
+			<section className="grid grid-cols-3 gap-2 pt-2">
+				<StatCard label="걱정한 횟수" value={`${stats.total}`} />
+				<StatCard label="현실이 된 걱정" value={`${stats.realized}`} />
 				<StatCard
 					label="현실이 될 확률"
 					value={`${stats.probability}%`}
-					sub="데이터로 확인하는 기우"
 				/>
 			</section>
 
@@ -174,7 +159,7 @@ const WorryPage: React.FC = () => {
 				<button
 					type="button"
 					onClick={() => setIsDeckOpen((prev) => !prev)}
-					className="w-full flex items-center justify-between bg-white rounded-3xl border border-gray-100 px-4 py-3"
+					className="w-full flex items-center justify-between bg-white rounded-2xl border border-gray-100 px-4 py-3"
 				>
 					<div className="text-left">
 						<p className="text-base font-pretendard-bold text-black-aneuk">
@@ -304,14 +289,12 @@ const buildSummary = (content: string) => {
 const StatCard: React.FC<{
 	label: string;
 	value: string;
-	sub: string;
-}> = ({ label, value, sub }) => (
-	<div className="rounded-2xl border border-gray-100 px-4 py-3 space-y-1">
+}> = ({ label, value }) => (
+	<div className="rounded-2xl border bg-white border-gray-100 px-4 py-3 space-y-1">
 		<div className="text-xs text-gray-400">{label}</div>
 		<div className="text-xl font-pretendard-bold text-black-aneuk">
 			{value}
 		</div>
-		<div className="text-[11px] text-gray-400">{sub}</div>
 	</div>
 );
 
