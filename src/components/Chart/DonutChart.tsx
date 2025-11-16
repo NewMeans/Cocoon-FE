@@ -81,7 +81,7 @@ const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
 
 	return (
 		<div className="w-full bg-white rounded-2xl shadow-md p-4">
-			<div className="font-pretendard-bold text-2xl text-black-aneuk mb-4 ml-1">
+			<div className="font-pretendard-bold text-xl text-black-aneuk mb-4 ml-1">
 				최근 30일 감정 추이
 			</div>
 			<div className="w-full">

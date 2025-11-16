@@ -54,11 +54,11 @@ const Collection: React.FC<CollectionProgressProps> = ({ data }) => {
 	return (
 		<div className="w-full bg-white rounded-2xl shadow-md p-6">
 			<div className="flex flex-row justify-between items-center">
-				<div className="font-pretendard-bold text-2xl text-black-aneuk mb-4">
+				<div className="font-pretendard-bold text-xl text-black-aneuk mb-4">
 					감정 도감
 				</div>
 				<div
-					className={`font-pretendard-bold text-2xl mb-4 flex flex-row justify-start items-end`}
+					className={`font-pretendard-bold text-xl mb-4 flex flex-row justify-start items-end`}
 				>
 					<div className="text-black-aneuk">
 						<span
@@ -77,9 +77,9 @@ const Collection: React.FC<CollectionProgressProps> = ({ data }) => {
 					</div>
 				</div>
 			</div>
-			<div className="w-full bg-gray-100 rounded-full h-6 mb-8">
+			<div className="w-full bg-gray-100 rounded-full h-4 mb-8">
 				<div
-					className="bg-black-aneuk h-6 rounded-full transition-all duration-500"
+					className="bg-black-aneuk h-4 rounded-full transition-all duration-500"
 					style={{ width: `${percentageFilled}%` }}
 				></div>
 			</div>
