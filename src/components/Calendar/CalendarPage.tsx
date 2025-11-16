@@ -125,7 +125,7 @@ const CalendarPage: React.FC = () => {
 				ref={containerRef}
 				className="flex flex-col flex-grow min-h-0 justify-start items-center bg-white-aneuk overflow-y-auto"
 			>
-				<div className="flex flex-col items-center w-full px-4 pb-20 gap-4">
+				<div className="flex flex-col items-center w-full px-6 pb-20 gap-4">
 					{!isLoading && (
 						<Card
 							curDiary={curDiary}

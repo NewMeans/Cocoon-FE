@@ -19,7 +19,7 @@ export const EmotionLabels: React.FC<EmotionLabelsProps> = ({
 	};
 
 	return (
-		<div className="flex flex-row flex-wrap justify-start items-start px-4 pt-4 w-full duration-500 ease-in-out animate-slide-up">
+		<div className="flex flex-row flex-wrap justify-start items-start px-4 w-full duration-500 ease-in-out animate-slide-up">
 			{curDiary &&
 				curDiary.data.emotionList.map((emotion) => {
 					const isSelected = selectedEmotionId === emotion.id;
