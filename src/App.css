@@ -2,3 +2,10 @@ body {
 	overflow: hidden;
 	touch-action: manipulation;
 }
+
+html,
+body,
+#root {
+	height: auto;
+	min-height: 100vh;
+}

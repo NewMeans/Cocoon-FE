@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
 			<div
 				className={`flex flex-col w-full h-full ${
 					randomDiary ? "justify-start" : "justify-center"
-				} items-center bg-white-aneuk mt-6 mb-80 gap-4`}
+				} items-center bg-white-aneuk mt-6 mb-80 gap-4 px-4`}
 			>
 				{!randomDiary && (
 					<div className="font-pretendard-bold text-2xl text-black-aneuk mb-8">

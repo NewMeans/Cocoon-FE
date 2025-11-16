@@ -98,7 +98,7 @@ const WorryPage: React.FC = () => {
 	}, [selectedWorry]);
 
 	return (
-		<div className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk px-4 py-6 space-y-6">
+		<div className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk px-4 py-6 pb-32 space-y-6">
 			<section className="space-y-1">
 				<div className="flex items-center space-x-2">
 					<h1 className="text-xl font-pretendard-bold text-black-aneuk">
@@ -269,7 +269,8 @@ const WorryPage: React.FC = () => {
 								</div>
 							) : (
 								<p className="text-xs text-gray-500">
-									이미 기록된 걱정이에요. 필요하면 삭제할 수 있어요.
+									이미 기록된 걱정이에요. 필요하면 삭제할 수
+									있어요.
 								</p>
 							)}
 						</div>
@@ -332,10 +333,7 @@ const StatusBadge: React.FC<{
 	dense?: boolean;
 	className?: string;
 }> = ({ status, dense = false, className }) => {
-	const config: Record<
-		WorryStatus,
-		{ label: string; classes: string }
-	> = {
+	const config: Record<WorryStatus, { label: string; classes: string }> = {
 		pending: {
 			label: "진행 중",
 			classes: "bg-gray-100 text-gray-600",
