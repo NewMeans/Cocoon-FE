@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ curDiary, isFlipped, setIsFlipped }) => {
 
 	return (
 		<div
-			className="group flex flex-col w-full aspect-[2/2.8] mt-[5%] [perspective:1000px] animate-slide-up cursor-pointer"
+			className="group flex flex-col w-full aspect-[2/2.8] mt-4 [perspective:1000px] animate-slide-up cursor-pointer"
 			onClick={handleCardClick}
 		>
 			<div

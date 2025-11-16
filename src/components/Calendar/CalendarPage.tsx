@@ -123,25 +123,25 @@ const CalendarPage: React.FC = () => {
 			</div>
 			<div
 				ref={containerRef}
-				className="flex flex-col flex-grow min-h-0 justify-start items-center bg-white-aneuk pb-40 overflow-y-auto"
+				className="flex flex-col flex-grow min-h-0 justify-start items-center bg-white-aneuk overflow-y-auto"
 			>
-				{!isLoading && (
-					<div className="w-full h-full px-3">
+				<div className="flex flex-col items-center w-full px-2 pb-20 gap-4">
+					{!isLoading && (
 						<Card
 							curDiary={curDiary}
 							isFlipped={isFlipped}
 							setIsFlipped={setIsFlipped}
 						/>
-					</div>
-				)}
-				{isFlipped && (
-					<EmotionLabels
-						curDiary={curDiary}
-						selectedEmotionId={selectedEmotionId}
-						setSelectedEmotionId={setSelectedEmotionId}
-						descriptionRef={descriptionRef}
-					/>
-				)}
+					)}
+					{isFlipped && (
+						<EmotionLabels
+							curDiary={curDiary}
+							selectedEmotionId={selectedEmotionId}
+							setSelectedEmotionId={setSelectedEmotionId}
+							descriptionRef={descriptionRef}
+						/>
+					)}
+				</div>
 			</div>
 		</div>
 	);
