@@ -131,8 +131,8 @@ export function WeeklyCalendar({
 
 	return (
 		<div>
-			<div className="flex justify-between h-16 items-center px-3">
-				<span className="font-pretendard-bold text-2xl">
+			<div className="flex justify-between h-14 items-center px-1">
+				<span className="font-pretendard-bold text-xl">
 					{headerText}
 				</span>
 				<div className="flex flex-row space-x-6">

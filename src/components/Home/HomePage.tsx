@@ -77,18 +77,13 @@ const HomePage: React.FC = () => {
 	return (
 		<div
 			ref={containerRef}
-			className="flex flex-col justify-start items-center w-full h-full overflow-y-auto bg-white-aneuk"
+			className="flex flex-col justify-end items-center w-full h-full overflow-y-auto bg-white-aneuk"
 		>
 			<div
 				className={`flex flex-col w-full h-full ${
 					randomDiary ? "justify-start" : "justify-center"
 				} items-center bg-white-aneuk mt-6 mb-80 gap-4 px-4`}
 			>
-				{!randomDiary && (
-					<div className="font-pretendard-bold text-2xl text-black-aneuk mb-8">
-						오늘의 일기를 뽑아보세요
-					</div>
-				)}
 				{!isLoading && (
 					<HomeCard
 						key={randomDiary?.data.diary_id || Math.random()}
@@ -110,7 +105,7 @@ const HomePage: React.FC = () => {
 					<div
 						onMouseDown={handleMouseDown}
 						onMouseUp={handleMouseUp}
-						className={`mt-12 w-[20%] max-w-[220px] aspect-square rounded-2xl bg-white shadow-inner-strong flex items-center justify-center cursor-pointer transition-transform duration-150 overflow-hidden ${
+						className={`w-[30%] max-w-[220px] aspect-square rounded-full bg-white shadow-inner-strong flex items-center justify-center cursor-pointer transition-transform duration-150 overflow-hidden ${
 							isImageClicked ? "scale-95" : "scale-100"
 						}`}
 					>
@@ -119,6 +114,12 @@ const HomePage: React.FC = () => {
 							alt="오늘의 일기 카드 뽑기"
 							className="w-full h-full object-cover"
 						/>
+					</div>
+				)}
+
+				{!randomDiary && (
+					<div className="font-pretendard-bold text-xl text-black-aneuk mb-8">
+						콩이를 눌러 추억을 회상해보세요!
 					</div>
 				)}
 			</div>

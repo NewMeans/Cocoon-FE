@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FinalDiary } from "../../api/diary";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import sampleImg from "/Users/minsik/Documents/Projects/A-Neuk-FE/src/assets/images/odocat.png";
 import { getEmotionColor } from "../../utils/GetEmotionColor";
 
 interface HomeCardProps {
