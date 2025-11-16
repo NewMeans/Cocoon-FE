@@ -139,7 +139,7 @@ const WorryPage: React.FC = () => {
 					<div>요약 · {newWorry ? buildSummary(newWorry) : "-"}</div>
 					<button
 						onClick={handleAddWorry}
-						className="px-4 py-2 rounded-2xl bg-black-aneuk text-white font-pretendard-medium disabled:opacity-30"
+						className="px-6 py-4 rounded-2xl bg-black-aneuk text-white font-pretendard-medium disabled:opacity-30"
 						disabled={!newWorry.trim()}
 					>
 						기록하기

@@ -46,7 +46,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
 
 	return (
 		<div
-			className={`group flex flex-col w-[90%] aspect-[2/2.8] mt-[5%] [perspective:1000px] animate-flip cursor-pointer`}
+			className="group flex flex-col w-full max-w-[360px] aspect-[3/4] [perspective:1000px] animate-flip cursor-pointer"
 			onClick={handleCardClick}
 		>
 			<div

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import apiClient from "../../api";
 import { FinalDiary } from "../../api/diary";
-import Card from "../Calendar/Card";
 import HomeCard from "./HomeCard";
 import { EmotionLabels } from "../Calendar/EmotionLabels";
 import logoImg from "../../assets/images/maltipoo.png";
@@ -74,52 +73,66 @@ const HomePage: React.FC = () => {
 		handleRandomButton();
 	};
 
+	const drawButton = (
+		<div
+			onMouseDown={handleMouseDown}
+			onMouseUp={handleMouseUp}
+			className={`w-[46%] max-w-[220px] aspect-square rounded-full bg-white shadow-inner-strong flex items-center justify-center cursor-pointer transition-transform duration-150 overflow-hidden ${
+				isImageClicked ? "scale-95" : "scale-100"
+			}`}
+		>
+			<img
+				src={logoImg}
+				alt="오늘의 일기 카드 뽑기"
+				className="w-full h-full object-cover"
+			/>
+		</div>
+	);
+
 	return (
 		<div
 			ref={containerRef}
-			className="flex flex-col justify-end items-center w-full h-full overflow-y-auto bg-white-aneuk"
+			className="flex flex-col w-full h-full overflow-y-auto bg-white-aneuk"
 		>
 			<div
-				className={`flex flex-col w-full h-full ${
-					randomDiary ? "justify-start" : "justify-center"
-				} items-center bg-white-aneuk mt-6 mb-80 gap-4 px-4`}
+				className={`flex flex-1 flex-col items-center w-full min-h-screen-dynamic max-w-[440px] mx-auto px-5 ${
+					randomDiary
+						? "pt-8 pb-24 gap-6 justify-start"
+						: "pb-24 justify-center gap-6"
+				}`}
 			>
-				{!isLoading && (
-					<HomeCard
-						key={randomDiary?.data.diary_id || Math.random()}
-						curDiary={randomDiary}
-						isFlipped={isFlipped}
-						isFlipping={isFlipping}
-						setIsFlipped={setIsFlipped}
-					/>
-				)}
-				{isFlipped && (
-					<EmotionLabels
-						curDiary={randomDiary}
-						selectedEmotionId={selectedEmotionId}
-						setSelectedEmotionId={setSelectedEmotionId}
-						descriptionRef={descriptionRef}
-					/>
-				)}
-				{!isFlipped && (
-					<div
-						onMouseDown={handleMouseDown}
-						onMouseUp={handleMouseUp}
-						className={`w-[30%] max-w-[220px] aspect-square rounded-full bg-white shadow-inner-strong flex items-center justify-center cursor-pointer transition-transform duration-150 overflow-hidden ${
-							isImageClicked ? "scale-95" : "scale-100"
-						}`}
-					>
-						<img
-							src={logoImg}
-							alt="오늘의 일기 카드 뽑기"
-							className="w-full h-full object-cover"
+				{randomDiary ? (
+					<>
+						<HomeCard
+							key={randomDiary.data.diary_id}
+							curDiary={randomDiary}
+							isFlipped={isFlipped}
+							isFlipping={isFlipping}
+							setIsFlipped={setIsFlipped}
 						/>
-					</div>
-				)}
-
-				{!randomDiary && (
-					<div className="font-pretendard-bold text-xl text-black-aneuk mb-8">
-						콩이를 눌러 추억을 회상해보세요!
+						{isFlipped && (
+							<EmotionLabels
+								curDiary={randomDiary}
+								selectedEmotionId={selectedEmotionId}
+								setSelectedEmotionId={setSelectedEmotionId}
+								descriptionRef={descriptionRef}
+							/>
+						)}
+						{!isFlipped && drawButton}
+					</>
+				) : (
+					<div className="flex flex-1 w-full flex-col items-center justify-center">
+						<div className="flex w-full max-w-[360px] flex-col items-center text-center gap-4 px-2">
+							{drawButton}
+							<div className="font-pretendard-bold text-lg text-black-aneuk">
+								콩이를 눌러 추억을 회상해보세요!
+							</div>
+							<div className="font-pretendard-regular text-xs text-[#9ea4aa] leading-relaxed max-w-[320px]">
+								콩이는 코쿤팀에서 제공하는 샘플 페르소나에요.
+								<br />
+								나만의 페르소나 설정 기능을 기대해주세요!
+							</div>
+						</div>
 					</div>
 				)}
 			</div>
