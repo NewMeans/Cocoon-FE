@@ -21,7 +21,7 @@
 
 ## 🌐 서비스 링크
 
-🔗 **[서비스 바로가기 (Cocoon 프로토타입)](https://aneuk.dev-lr.com/)**
+🔗 **[서비스 바로가기 (Cocoon 프로토타입)](https://cocoon.dodae.me/)**
 
 ---
 
