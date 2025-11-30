@@ -10,9 +10,9 @@ import logo from "../../assets/images/cocoon_logo.png";
 
 const OAUTH_BASE_URL =
 	process.env.REACT_APP_OAUTH_BASE_URL ??
-	"https://aneuk-api.dev-lr.com/oauth2/authorization";
+	"https://aneuk-api.dodae.me/oauth2/authorization";
 const API_BASE_URL =
-	process.env.REACT_APP_API_BASE_URL ?? "https://aneuk-api.dev-lr.com";
+	process.env.REACT_APP_API_BASE_URL ?? "https://aneuk-api.dodae.me";
 const ENABLE_DEV_LOGIN =
 	(process.env.REACT_APP_ENABLE_DEV_LOGIN ?? "false").toLowerCase() ===
 	"true";
