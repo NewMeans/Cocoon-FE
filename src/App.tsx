@@ -20,6 +20,7 @@ import LoginPage from "./components/Login/LoginPage";
 import HomePage from "./components/Home/HomePage";
 import Cookies from "js-cookie";
 import WorryPage from "./components/Worry/WorryPage";
+import PersonaSetupPage from "./components/Persona/PersonaSetupPage";
 
 function App() {
 	const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
 						<Route path="/calendar" element={<CalendarPage />} />
 						<Route path="/chart" element={<ChartPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
+						<Route path="/persona" element={<PersonaSetupPage />} />
 					</Routes>
 					{location.pathname === "/calendar" && (
 						<FloatingActionButton />
@@ -82,7 +84,8 @@ function App() {
 				</EmotionSelectPageProvider>
 				{location.pathname !== "/" &&
 					location.pathname !== "/login" &&
-					location.pathname !== "/emotion-select" && <BottomAppBar />}
+					location.pathname !== "/emotion-select" &&
+					location.pathname !== "/persona" && <BottomAppBar />}
 			</div>
 		</div>
 	);
