@@ -144,7 +144,7 @@ const HomePage: React.FC = () => {
 						onClick={() => navigate("/persona")}
 						className="mt-2 flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#191F28] text-white font-pretendard-bold text-base hover:brightness-110 transition"
 					>
-						<IconProvider.FileEditIcon className="h-5 w-5" />
+						<IconProvider.PersonaIcon className="h-5 w-5" />
 						페르소나 설정 시작하기
 					</button>
 					<div className="text-xs text-gray-400 text-center leading-relaxed">

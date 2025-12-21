@@ -13,6 +13,8 @@ import { ReactComponent as ImageIcon } from "../assets/icons/Image.svg";
 import { ReactComponent as HomeIcon } from "../assets/icons/Home.svg";
 import { ReactComponent as ExitIcon } from "../assets/icons/Exit.svg";
 import { ReactComponent as CheckIcon } from "../assets/icons/Check.svg";
+import { Plus as PlusIcon } from "lucide-react";
+import { Sparkles as PersonaIcon } from "lucide-react";
 
 export const IconProvider = {
 	ChatIcon,
@@ -30,4 +32,6 @@ export const IconProvider = {
 	HomeIcon,
 	ExitIcon,
 	CheckIcon,
+	PlusIcon,
+	PersonaIcon,
 };

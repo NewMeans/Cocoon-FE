@@ -234,7 +234,7 @@ const WorryPage: React.FC = () => {
 					onClick={() => setIsComposeOpen(true)}
 					className="w-full h-14 rounded-2xl bg-[#191F28] text-white font-pretendard-bold text-base hover:brightness-110 transition flex items-center justify-center gap-2"
 				>
-					<IconProvider.FileEditIcon className="w-5 h-5" />새 카드
+					<IconProvider.PlusIcon className="w-5 h-5" />새 카드
 					작성하기
 				</button>
 			</section>
