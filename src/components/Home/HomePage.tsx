@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IconProvider } from "../../utils/IconProvider";
 
@@ -35,6 +35,52 @@ export default HomePage;
 
 const HomePage: React.FC = () => {
 	const navigate = useNavigate();
+	const phrases = useMemo(
+		() => [
+			"우리집 강아지와",
+			"우리집 고양이와",
+			"최애 아이돌과",
+			"최애 캐릭터와",
+		],
+		[]
+	);
+	const ticker = useMemo(() => [...phrases, phrases[0]], [phrases]);
+	const [tickerIndex, setTickerIndex] = useState(0);
+	const [instant, setInstant] = useState(false);
+	const ROW_HEIGHT = 30; // px, tighter line height for ticker
+
+	useEffect(() => {
+		let intervalId: number | undefined;
+		let resetId: number | undefined;
+		let instantOffId: number | undefined;
+
+		intervalId = window.setInterval(() => {
+			setTickerIndex((prev) => {
+				const next = prev + 1;
+				if (next >= ticker.length) {
+					return ticker.length - 1;
+				}
+				// If we're about to land on the duplicate (last item), schedule a snap reset after the slide.
+				if (next === ticker.length - 1) {
+					resetId = window.setTimeout(() => {
+						setInstant(true);
+						setTickerIndex(0);
+						instantOffId = window.setTimeout(
+							() => setInstant(false),
+							10
+						);
+					}, 650); // slightly longer than the transition
+				}
+				return next;
+			});
+		}, 2000);
+
+		return () => {
+			if (intervalId) clearInterval(intervalId);
+			if (resetId) clearTimeout(resetId);
+			if (instantOffId) clearTimeout(instantOffId);
+		};
+	}, [ticker.length]);
 
 	return (
 		<div className="flex h-full w-full items-center justify-center bg-white px-6">
@@ -44,10 +90,46 @@ const HomePage: React.FC = () => {
 					<div className="flex items-center gap-2 text-xs font-pretendard-medium text-[#8B95A1]">
 						<span>Persona Studio · Beta</span>
 					</div>
-					<div className="space-y-2">
-						<p className="text-2xl font-pretendard-bold text-[#191F28] leading-snug whitespace-pre-line">
-							매일 대화할 {"\n"}내 친구를 직접 만들어보세요!
-						</p>
+					<div className="space-y-1.5">
+						<div className="text-2xl font-pretendard-bold text-black-aneuk leading-[1.15]">
+							페르소나 설정하고
+						</div>
+						<div className="flex items-baseline gap-1.5 text-2xl font-pretendard-bold text-black-aneuk leading-[1.15]">
+							<span
+								className="relative inline-block align-bottom overflow-hidden"
+								style={{
+									height: `${ROW_HEIGHT}px`,
+									minWidth: "150px",
+									perspective: "700px",
+								}}
+							>
+								<div
+									className="flex flex-col"
+									style={{
+										transform: `translateY(-${
+											tickerIndex * ROW_HEIGHT
+										}px)`,
+										transition: instant
+											? "none"
+											: "transform 0.6s cubic-bezier(0.25, 0.8, 0.4, 1)",
+									}}
+								>
+									{ticker.map((phrase, idx) => (
+										<div
+											key={`${phrase}-${idx}`}
+											className="flex items-center text-left"
+											style={{
+												backfaceVisibility: "hidden",
+												height: `${ROW_HEIGHT}px`,
+											}}
+										>
+											{phrase}
+										</div>
+									))}
+								</div>
+							</span>
+							<span className="leading-snug">대화하기</span>
+						</div>
 						<p className="text-sm text-[#6B7684] leading-relaxed whitespace-pre-line">
 							간편하게 설계된 페르소나 설정 플로우를 체험해보세요.
 							{"\n"}말투, 성격, 시그니처 버릇까지 한 번에
