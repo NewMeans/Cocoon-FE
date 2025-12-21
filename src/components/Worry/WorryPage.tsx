@@ -472,7 +472,7 @@ const ProbabilityCard: React.FC<{
 					<div className="text-sm font-pretendard-bold text-black-aneuk">
 						걱정이 현실이 될 확률
 					</div>
-					<div className="mt-1 text-xl text-gray-500 font-gowun-bold leading-relaxed">
+					<div className="mt-1 text-xl text-gray-500 font-gowun-bold leading-relaxed whitespace-pre-line">
 						{comparison}
 					</div>
 				</div>
@@ -488,19 +488,19 @@ const ProbabilityCard: React.FC<{
 
 const buildComparisonText = (probability: number) => {
 	if (probability < 1) {
-		return "벼락을 두 번 맞을 확률보다 낮아요.";
+		return "벼락을 두 번 맞을 \n확률보다 낮아요.";
 	}
 	if (probability <= 5) {
-		return "굴을 먹다가 진주를 발견할 확률보다 낮아요.";
+		return "굴을 먹다가 \n진주를 발견할 확률보다 낮아요.";
 	}
 	if (probability <= 15) {
-		return "비행기가 비행 중 번개에 맞을 확률보다 낮아요.";
+		return "비행기가 비행 중 \n번개에 맞을 확률보다 낮아요.";
 	}
 	if (probability <= 25) {
-		return "자판기에서 다른 음료가 나올 확률보다 낮아요.";
+		return "자판기에서 \n다른 음료가 나올 확률보다 낮아요.";
 	}
 	if (probability <= 50) {
-		return "세탁기에서 양말 한 짝이 사라질 확률보다 낮아요.";
+		return "세탁기에서 \n양말 한 짝이 사라질 확률보다 낮아요.";
 	}
 	return "꼭 필요한 걱정만 골라서 하고 계시네요!";
 };
