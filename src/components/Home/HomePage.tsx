@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
 
 	return (
 		<div className="flex h-full w-full items-center justify-center bg-white px-6">
-			<div className="relative w-full max-w-[440px] overflow-hidden rounded-[28px] border border-gray-100 bg-gradient-to-br from-[#F9FAFF] via-white to-[#F4F6FF] p-6 shadow-sm">
+			<div className="relative w-full mb-32 max-w-[440px] overflow-hidden rounded-[28px] border border-gray-100 bg-gradient-to-br from-[#F9FAFF] via-white to-[#F4F6FF] p-6 shadow-sm">
 				<div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(49,130,246,0.08),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(240,68,82,0.06),transparent_35%)]" />
 				<div className="relative flex flex-col gap-5">
 					<div className="flex items-center gap-2 text-xs font-pretendard-medium text-[#8B95A1]">
@@ -132,8 +132,7 @@ const HomePage: React.FC = () => {
 						</div>
 						<p className="text-sm text-[#6B7684] leading-relaxed whitespace-pre-line">
 							간편하게 설계된 페르소나 설정 플로우를 체험해보세요.
-							{"\n"}말투, 성격, 시그니처 버릇까지 한 번에
-							완성해요.
+							{"\n"}프로필 사진, 말투, 성격까지 한 번에 완성해요.
 						</p>
 					</div>
 					<div className="grid grid-cols-2 gap-2">
@@ -142,7 +141,7 @@ const HomePage: React.FC = () => {
 					</div>
 					<button
 						onClick={() => navigate("/persona")}
-						className="mt-2 flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#191F28] text-white font-pretendard-bold text-base hover:brightness-110 transition"
+						className="mt-2 flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#191F28] text-white font-pretendard-medium text-base hover:brightness-110 transition"
 					>
 						<IconProvider.PersonaIcon className="h-5 w-5" />
 						페르소나 설정 시작하기

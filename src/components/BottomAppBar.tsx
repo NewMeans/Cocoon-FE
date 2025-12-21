@@ -19,16 +19,16 @@ const BottomAppBar: React.FC = () => {
 		} else if (path.includes("profile")) {
 			setSelectedIcon("profile");
 		} else {
-			setSelectedIcon("home");
+			setSelectedIcon("persona");
 		}
 	}, [location.pathname]);
 
 	return (
 		<div className="absolute bottom-0 w-full h-16 bg-white text-black-aneuk flex flex-shrink-0 justify-around items-center">
 			<IconButton
-				icon={<IconProvider.HomeIcon />}
-				label="Home"
-				selected={selectedIcon === "home"}
+				icon={<IconProvider.PersonaIcon className="w-6 h-6" />}
+				label="Persona"
+				selected={selectedIcon === "persona"}
 				onClick={() => {
 					navigate("/home");
 				}}

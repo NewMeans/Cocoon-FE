@@ -472,7 +472,7 @@ const ProbabilityCard: React.FC<{
 					<div className="text-sm font-pretendard-bold text-black-aneuk">
 						걱정이 현실이 될 확률
 					</div>
-					<div className="mt-1 text-xl text-gray-500 font-gowun-bold leading-relaxed whitespace-pre-line">
+					<div className="mt-1 text-xl text-gray-500 font-gowun-bold whitespace-pre-line">
 						{comparison}
 					</div>
 				</div>
@@ -488,21 +488,21 @@ const ProbabilityCard: React.FC<{
 
 const buildComparisonText = (probability: number) => {
 	if (probability < 1) {
-		return "벼락을 두 번 맞을 \n확률보다 낮아요.";
+		return "쌍둥이로 \n태어날 확률보다 적어요";
 	}
 	if (probability <= 5) {
-		return "굴을 먹다가 \n진주를 발견할 확률보다 낮아요.";
+		return "바다에서 \n상어를 볼 확률보다 낮아요.";
 	}
 	if (probability <= 15) {
-		return "비행기가 비행 중 \n번개에 맞을 확률보다 낮아요.";
+		return "터키아이스크림 \n한 번에 받을 확률보다 낮아요.";
 	}
 	if (probability <= 25) {
-		return "자판기에서 \n다른 음료가 나올 확률보다 낮아요.";
+		return "USB 한 번에 꽂을 \n 확률보다 낮아요.";
 	}
-	if (probability <= 50) {
-		return "세탁기에서 \n양말 한 짝이 사라질 확률보다 낮아요.";
+	if (probability <= 40) {
+		return "걱정 해결에 도움이 될\n행동을 찾아볼까요?.";
 	}
-	return "꼭 필요한 걱정만 골라서 하고 계시네요!";
+	return "꼭 필요한 걱정만\n 골라서 하고 계시네요!";
 };
 
 const formatRelative = (createdAt: string) => {

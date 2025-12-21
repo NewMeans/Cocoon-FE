@@ -125,6 +125,10 @@ const PersonaSetupPage: React.FC = () => {
 
 	const handleNext = () => {
 		if (!canProceed) return;
+		if (currentStep === steps.length - 1) {
+			navigate("/chat");
+			return;
+		}
 		setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
 	};
 
@@ -417,12 +421,6 @@ const PersonaSetupPage: React.FC = () => {
 									size={16}
 									className="text-amber-500"
 								/>
-								<span>
-									"
-									{persona.signatureLine ||
-										"누나 나 산책 가고 싶어 멍멍!"}
-									"를 분석해 말투를 복제할게요.
-								</span>
 							</div>
 						</div>
 					</div>
@@ -435,21 +433,13 @@ const PersonaSetupPage: React.FC = () => {
 								<Sparkles size={18} className="text-sky-500" />
 								{nameLabel}
 							</div>
-							<div className="mt-3 flex flex-col gap-2 rounded-2xl border border-black-aneuk/10 bg-white p-3">
+							<div className="mt-3 flex flex-col gap-2 bg-white p-3">
 								<div className="text-sm text-slate-500">
 									첫 인사
 								</div>
 								<div className="rounded-2xl bg-black-aneuk text-white px-4 py-3 text-base font-pretendard-medium shadow-sm">
 									{generatedPreviewLine}
 								</div>
-							</div>
-							<div className="mt-3 space-y-2 rounded-2xl border border-black-aneuk/10 bg-white px-4 py-3">
-								<div className="text-sm font-pretendard-medium text-slate-600">
-									LLM 프롬프트 조합
-								</div>
-								<pre className="whitespace-pre-line text-sm font-pretendard-regular text-black-aneuk">
-									{systemPromptPreview}
-								</pre>
 							</div>
 						</div>
 						<div className="bg-white p-5">
@@ -473,14 +463,6 @@ const PersonaSetupPage: React.FC = () => {
 								}
 								className="mt-2 w-full accent-black-aneuk"
 							/>
-							<div className="mt-3 grid grid-cols-2 gap-2">
-								<button className="rounded-2xl bg-black-aneuk text-white px-4 py-3 text-sm font-pretendard-bold shadow-sm transition hover:brightness-110">
-									완전 똑같아! (시작하기)
-								</button>
-								<button className="rounded-2xl border border-black-aneuk/10 bg-white px-4 py-3 text-sm font-pretendard-bold text-black-aneuk transition hover:border-black-aneuk/30">
-									음, 조금 어색한데?
-								</button>
-							</div>
 						</div>
 					</div>
 				);
